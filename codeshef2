@@ -1,0 +1,74 @@
+
+Problem
+There are two groups, one of NN boys and the other of NN girls numbered from 11 to NN.
+
+You are given two arrays AA and BB containing NN numbers each, denoting the height of boys and girls in the group. You have to form NN couples, where each couple will consist of 11 boy and 11 girl.
+
+Each couple has a LIKENESS VALUE, where
+
+LIKENESS VALUE = height of girl in the couple + height of boy in that couple.
+You have to form NN couples in such a way that the maximum of LIKENESS VALUE of all the couples is minimum.
+
+Note:- No boy or girl can form more than one couple.
+
+
+
+
+
+
+
+
+
+-------------------c++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+int compute(vector<int>v1,vector<int>v2,int n)
+{
+  sort(v1.begin(),v1.end());
+  sort(v2.begin(),v2.end(),greater<int>());
+  int ans=0;
+  for(int i=0;i<n;i++)
+  {
+   ans=max(ans,v1[i]+v2[i]);  
+  }
+  return ans;
+}
+
+int main() {
+    int tc;
+    cin>>tc;
+    while(tc--){
+        int n;
+        cin>>n;
+   vector<int>v1;
+   for(int i=0;i<n;i++)
+   {
+       int j;
+       cin>>j;
+       v1.push_back(j);
+   }
+    vector<int>v2;
+   for(int i=0;i<n;i++)
+   {
+       int j;
+       cin>>j;
+       v2.push_back(j);
+   }
+   cout<<compute(v1,v2,n)<<endl;;
+}
+	return 0;
+}
