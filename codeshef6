@@ -1,0 +1,148 @@
+Chef is participating in an ICPC regional contest, in which there is a total of NN problems (numbered 11 through NN) with varying difficulties. For each valid ii, the ii-th easiest problem is problem A_iA 
+i
+​
+ .
+
+After a team solves a problem, a balloon with a colour representing that problem is tied next to their desk. Chef is fond of colours in VIBGYOR, which are representative of the problems with numbers 11 through 77. The remaining problems have their own representative colours too.
+
+Find the minimum number of problems which Chef's team needs to solve in order to get all the balloons for problems 11 through 77 (and possibly some other balloons too) tied next to their desk, if you know that Chef's team knows the difficulties of all problems and solves the problems in increasing order of difficulty.
+
+Input
+The first line of the input contains a single integer TT denoting the number of test cases. The description of TT test cases follows.
+The first line of each test case contains a single integer NN.
+The second line contains NN space-separated integers A_1, A_2, \ldots, A_NA 
+1
+​
+ ,A 
+2
+​
+ ,…,A 
+N
+​
+ .
+Output
+For each test case, print a single line containing one integer ― the minimum number of problems Chef's team needs to solve.
+
+Constraints
+1 \leq T \leq 10,5001≤T≤10,500
+7 \leq N \leq 157≤N≤15
+1 \leq A_i \leq N1≤A 
+i
+​
+ ≤N for each valid ii
+A_1, A_2, \ldots, A_NA 
+1
+​
+ ,A 
+2
+​
+ ,…,A 
+N
+​
+  are pairwise distinct
+Sample 1:
+Input
+Output
+3
+7
+1 2 3 4 5 7 6
+8
+8 7 6 5 4 3 2 1
+9
+7 4 3 5 6 1 8 2 9
+7
+8
+8
+Explanation:
+Example case 1: Since there are a total of 77 problems, Chef's team will have to solve all of them.
+
+Example case 2: Problems 11 through 77 appear among the first 88 problems.
+
+Example case 3: Problems 11 through 77 again appear among the first 88 problems.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------c++
+
+
+
+
+
+
+
+
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+int compute(vector<int>v,int n)
+{
+	// sort(v.begin(),v.end());
+	vector<int>v2;
+  	for(int i=0;i<7;i++)
+  	{
+  		v2.push_back(i+1);
+  		// cout<<v2[i]<<" ";
+  	}
+  	int i=n-1;
+  	int res=0;
+  	while(i>=0)
+  	{
+  		int k=0;
+  		while(k<7)
+  		{
+  			// cout<<k<<" ";
+  			if(v[i]==v2[k])
+  			{
+  				res=i;
+  				return res+1;
+  			}
+  			k++;
+  		}
+  		i--;
+  	}
+
+
+  // return res+1;
+}
+
+int main() {
+  int tc;
+  cin>>tc;
+  while(tc--)
+  {
+  	int n;
+  	cin>>n;
+  	vector<int>v;
+  	for(int i=0;i<n;i++)
+  	{
+  		int j;
+  		cin>>j;
+  		v.push_back(j);
+  	}
+  	cout<<compute(v,n)<<endl;
+  }
+   	return 0;
+}
