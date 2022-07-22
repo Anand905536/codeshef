@@ -1,0 +1,160 @@
+Today, Chef decided to cook some delicious meals from the ingredients in his kitchen. There are NN ingredients, represented by strings S_1, S_2, \ldots, S_NS 
+1
+​
+ ,S 
+2
+​
+ ,…,S 
+N
+​
+ . Chef took all the ingredients, put them into a cauldron and mixed them up.
+
+In the cauldron, the letters of the strings representing the ingredients completely mixed, 
+so each letter appears in the cauldron as many times as it appeared in all the strings in total;
+now, any number of times, Chef can take one letter out of the cauldron (if this letter appears in the cauldron multiple times,
+it can be taken out that many times) and use it in a meal. A complete meal is the string "codechef". 
+Help Chef find the maximum number of complete meals he can make!
+
+Input
+The first line of the input contains a single integer TT denoting the number of test cases. The description of TT test cases follows.
+The first line of each test case contains a single integer NN.
+NN lines follow. For each ii (1 \le i \le N1≤i≤N), the ii-th of these lines contains a single string S_iS 
+i
+​
+ .
+Output
+For each test case, print a single line containing one integer — the maximum number of complete meals Chef can create.
+
+Constraints
+1 \le T \le 1001≤T≤100
+1 \le N \le 1001≤N≤100
+|S_1| + |S_2| + \ldots + |S_N| \le 1,000∣S 
+1
+​
+ ∣+∣S 
+2
+​
+ ∣+…+∣S 
+N
+​
+ ∣≤1,000
+each string contains only lowercase English letters
+Sample 1:
+Input
+Output
+3
+6
+cplusplus
+oscar
+deck
+fee
+hat
+near
+5
+code
+hacker
+chef
+chaby
+dumbofe
+5
+codechef
+chefcode
+fehcedoc
+cceeohfd
+codechef
+1
+2
+5
+Explanation:
+Example case 1: After mixing, the cauldron contains the letter 'c' 3 times, the letter 'e' 4 times, and each of the letters 'o', 'd', 'h' and 'f' once. Clearly, this is only enough for one "codechef" meal.
+
+Example case 2: After mixing, the cauldron contains the letter 'c' 4 times, 'o' 2 times, 'd' 2 times, 'e' 4 times, 'h' 3 times and 'f' 2 times, which is enough to make 2 meals.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------in c++
+------------------------------- 
+
+
+#include <bits/stdc++.h>
+using namespace std;
+int compute(vector<string>v,int n)
+{
+	
+	string s="";       -----------------------------------------------------------------
+	 for(int i = 0; i < n; i++)
+	    {                                                                               this is how we can iterate in vector of string one by one character
+	        s += v[i];
+	    }--------------------------------------------------------------------------------
+    int i=0;
+    int count=0;
+    int c=0,o=0,d=0,e=0,h=0,f=0;
+    for(int i=0;i<s.length();i++)
+    {
+    	if(s[i]=='c')c++;
+    	else if(s[i]=='o')o++;
+    	else if(s[i]=='d')d++;
+    	else if(s[i]=='e')e++;
+    	else if(s[i]=='h')h++;
+    	else if(s[i]=='f')f++;
+       while(c>=2 && o>=1 && d>=1 && e>=2 && h>=1 && f>=1)
+    	{
+             count++;
+             c=c-2;
+             o--;
+             d--;
+             e=e-2;
+             h--;
+             f--;
+    	}
+    }
+    return count;
+}
+int main() {
+  int tc;
+  cin>>tc;
+  while(tc--)
+  {
+  	int n;
+  	cin>>n;
+  	vector<string>v;
+  	for(int i=0;i<n;i++)
+  	{
+  		string s;
+  		cin>>s;
+  		v.push_back(s);
+  		s="";
+  	}
+  	// for(int i=0;i<v.size();i++)
+  	// {
+  	// 	cout<<v[i]<<endl;
+  	// }
+  	cout<<compute(v,n)<<endl;
+  }
+   return 0;
+}
