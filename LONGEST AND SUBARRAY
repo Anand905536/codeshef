@@ -1,0 +1,83 @@
+Problem
+Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+You are given an integer NN. Consider the sequence containing the integers 1, 2, \dots, N1,2,…,N in increasing order (each exactly once).
+Find the length of the longest subarray in this sequence such that the bitwise AND of all elements in the subarray is positive.
+
+
+
+
+                                                             TWO APPROACH
+                                                             
+                                                             
+                                                             FIRST ONE 
+    #include<bits/stdc++.h>
+using namespace std;
+int power(int n)
+{
+	int p=1;
+	int count=0;
+	while(p*2<=n)
+	{
+		p=p*2;
+		// cout<<p<<endl;
+	}
+	return p;
+}
+int compute(int n)
+{
+ int ans=power(n);
+ int midans=ans/2;
+ int first=n-ans+1;
+ int second=ans-midans;
+ return max(first,second);
+}
+int main()
+{
+	int tc;
+	cin>>tc;
+	while(tc--)
+	{
+	  int n;
+	  cin>>n;
+	  cout<<compute(n)<<endl;;
+	}
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                           SECOND ONE
+                                                                           
+                                                                           
+                                                                           
+     #include <iostream>
+#include <math.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;cin >> t;
+	while(t--) {
+	long long int n;cin >> n;
+	int f=(int)log2(n);
+	long long int ans = pow(2,f);
+	cout << max(ans/2,n-ans+1) << endl;
+	}
+	return 0;
+}                                                                      
+                                                                           
