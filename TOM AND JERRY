@@ -1,0 +1,37 @@
+There is a grid of size 10^5 \times 10^510 
+5
+ ×10 
+5
+ , covered completely in railway tracks. 
+ Tom is riding in a train, currently in cell (a, b)(a,b), and Jerry is tied up in a different cell (c, d)(c,d), unable to move. 
+ The train has no breaks. It shall move exactly KK steps, and then its fuel will run out and it shall stop. 
+ In one step, the train must move to one of its neighboring cells, sharing a side.
+ Tom can’t move without the train, as the grid is covered in tracks. 
+ Can Tom reach Jerry’s cell after exactly KK steps?
+
+Note: Tom can go back to the same cell multiple times.
+                                                                          c++
+      #include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int tc;
+	cin>>tc;
+	while(tc--)
+	{
+	  double a,b,c,d,k;
+	  cin>>a>>b>>c>>d>>k;
+	  if(k<abs(a-c)+abs(b-d))cout<<"No"<<endl;
+	  else if(k>abs(a-c)+abs(b-d))
+	  {
+	  	int diff=k-abs(a-c)+abs(b-d);
+	  	if(diff%2==0)cout<<"yes"<<endl;
+	  	else cout<<"No"<<endl;
+	  }
+	  else cout<<"yes"<<endl;
+	 
+	
+	}
+	return 0;
+}                                                                    
