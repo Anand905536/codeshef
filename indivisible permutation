@@ -1,0 +1,74 @@
+// You are given an integer NN. Construct an array PP of size NN such that:
+
+// PP is a permutation of the first NN natural numbers, i.e, each integer 1, 2, 3, \ldots N1,2,3,…N occurs exactly once in PP. For example, [1, 3, 2][1,3,2] is a permutation of size 33, but [1, 3, 4][1,3,4] and [2, 1, 2][2,1,2] are not.
+// PP is indivisible. PP is said to be indivisible if ii does not divide P_iP 
+// i
+// ​
+//   for every index 2 \leq i \leq N2≤i≤N.
+// It can be proven that under the given constraints, there always exists an indivisible permutation. If there are multiple, you may print any of them.
+
+// Input Format
+// The first line of input contains a single integer TT, denoting the number of test cases. The description of TT test cases follows.
+// The first and only line of each test case contains a single integer NN, denoting the size of the indivisible permutation you must construct.
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+--------------------C PLUS PLUS
+
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int tc;
+	cin>>tc;
+	while(tc--)
+	{
+	int n;
+	cin>>n;
+	vector<int>v;
+	int k=1;
+	for(int i=0;i<n;i++)
+	{   
+		v.push_back(k++);
+	}
+	
+      k=1;
+	for(int i=1;i<n;i++)
+	{
+		if(v[i]%k==0 && i!=n-1)
+		{
+			swap(v[i],v[i+1]);
+			// k++;
+		}
+
+	}
+	
+	if(n==2)
+	{
+		swap(v[n-2],v[n-1]);
+	}
+	
+
+	
+	for(int i:v){
+		cout<<i<<" ";
+	}
+
+
+		cout<<endl;
+	}
+}
