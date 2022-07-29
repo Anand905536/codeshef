@@ -1,0 +1,54 @@
+   There were NN students (numbered 11 through NN) participating in the Indian Programming Camp (IPC) and they watched a total of KK lectures
+   (numbered 11 through KK). For each student ii and each lecture jj, the ii-th student watched the jj-th lecture for T_{i, j}T i,j​  minutes.
+
+Additionally, for each student ii, we know that this student asked the question, "What is the criteria for getting a certificate?" Q_iQ i​  times.
+
+The criteria for getting a certificate is that a student must have watched at least MM minutes 
+of lectures in total and they must have asked the questionno more than 1010 times.
+
+Find out how many participants are eligible for a certificate.  
+     
+     
+     
+     
+     
+     
+     
+            CPLUSPLUS
+                            
+                            
+                            
+                            
+                            
+                            
+                            #include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int tc;
+	cin>>tc;
+	while(tc--)
+	{
+	  int n,p,x,y;
+      cin>>n>>p>>x>>y;
+      vector<int>v;
+      for(int i=0;i<n;i++)
+      {
+      	int j;
+      	cin>>j;
+      	v.push_back(j);
+      }
+      int sum=0;
+    int j=0;
+     while(j<p)
+      {
+      	if(v[j]==0)
+           sum+=x;
+       else
+       	    sum+=y;
+
+       	j++;
+      }
+      cout<<sum<<endl;
+	}
+}
