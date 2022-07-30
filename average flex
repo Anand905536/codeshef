@@ -1,0 +1,72 @@
+    There are N students in a class, where the i-th student has a score of A[i].the ith student will BOAST
+     if and only if the number of students scoring less than or equal A[i] is greater than the number of students scoring greater than A[i]
+    Find the number of students who will boast.            
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 c++
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+ #include<bits/stdc++.h>
+using namespace std;
+int compute(vector<int>v,int n)
+{
+	sort(v.begin(),v.end());
+	int totalcount=n;
+	// cout<<totalcount<<endl;;
+	int count=0;
+	int j=n-1;
+	int checkequal=0;
+	while(j>=0)
+	{
+		if(v[j]>=v[j-1]  &&  totalcount>count)
+		{
+			count++;
+			totalcount--;
+		}
+
+		j--;
+	}
+	int i=totalcount;
+	while(i>=0)
+	{
+		if(v[i]==v[i-1])count++;
+		else break;
+		i--;
+	}
+	return count;
+}
+int main()
+{
+	int tc;
+	cin>>tc;
+	while(tc--)
+	{
+	  int n;
+	  cin>>n;
+	  vector<int>v;
+	 for(int i=0;i<n;i++)
+	{
+	 int j;
+	 cin>>j;
+	 v.push_back(j);
+	}
+	cout<<compute(v,n)<<endl;
+  }
+}
